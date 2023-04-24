@@ -12,8 +12,8 @@ OpenApi:
 spring:
   datasource:
     url: "jdbc:mysql://127.0.0.1:3306/journeyGenie?serverTimezone=Asia/Seoul"
-    username: "wz97"
-    password: "##wo26dhkttn"
+    username: "user"
+    password: "pwd"
 
   jpa:
     generate-ddl: true
