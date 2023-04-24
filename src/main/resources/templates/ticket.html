@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JourneyGenie : 승차권 확인</title>
+    <link rel="icon" href="/resources/static/image/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;700&family=Roboto:wght@100;400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/static/css/ticket.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="/resources/static/js/ticket.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#menu_btn').mouseenter(function () {
+                $('.menu_li').css('display', 'block');
+            })
+
+            $('.top_menu').mouseleave(function () {
+                $('.menu_li').css('display', 'none');
+            })
+
+            // 출발지, 도착지, 출발시간 및 도착시간 땡겨와서 span 값 변경하게 설정
+            // span값 받아오는거에 따라 btn 연결되는 사이트 조정
+        })
+    </script>
+</head>
+
+<body id="body">
+<th:block>
+    <span th:text="${session.userId}" id="session_value" hidden="hidden"></span>
+</th:block>
+    <header id="header">
+        <div class="header">
+            <ul>
+                <!-- 좌측 서브 메뉴 -->
+                <li>
+                    <div class="menu">
+                        <div id="menu_btn">메뉴</div>
+                        <div class="menu_li">
+                            <ul class="top_menu">
+                                <li><a href="#">승차권 확인</a></li>
+                                <li><a href="/schedule">시간표 조회</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- 중앙 로고 배치 -->
+                <li>
+                    <div id="logo">
+                        <a href="/main">JourneyGenie</a>
+                    </div>
+                </li>
+
+                <!-- 우측 로그인 및 마이페이지 -->
+                <li>
+                    <div id="sub_menu">
+                        <ul>
+                            <li><a id="login">로그인</a></li>
+                            <li><a href="/mypage_info">마이페이지</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div id="main_body">
+        <div class="body_center">
+            <div class="ticket_title">
+                <h1>승차권 확인</h1>
+            </div>
+
+            <div class="ticket_main">
+                <div class="ticket_total">
+                    <div class="total_dep">
+                        <form method="post" action="">
+                            <span id="dep_title">출발</span></br>
+                            <span id="dep_time">00:00</span>
+                        </form>
+                    </div>
+
+                    <div class="dep_arr_angle">
+                        <img src="/resources/static/image/angle_right.png" alt="우측 화살표">
+                    </div>
+                    <div class="dep_arr_angle_sub" hidden="hidden">
+                        환승
+                    </div>
+
+                    <div class="total_arr">
+                        <form method="post" action="">
+                            <span id="arr_title">도착</span></br>
+                            <span id="arr_time">00:00</span>
+                    </div>
+                </div>
+
+                <div class="ticket_sub1">
+                    <div class="ticket1_banner">승차권1</div>
+                    <div class="ticket1_info">
+                        <form method="post" action="">
+                            <span id="ticket1_info">종류</span></br>
+                            <span id="ticket1_infonum">KTX000</span>
+                        </form>
+                    </div>
+                    <div class="ticket1_dep">
+                        <form method="post" action="">
+                            <span id="ticket1_depst">출발</span></br>
+                            <span id="ticket1_deptime">00:00</span>
+                        </form>
+                    </div>
+                    <div class="ticket1_arr">
+                        <form method="post" action="">
+                            <span id="ticket1_arrst">도착</span></br>
+                            <span id="ticket1_arrtime">00:00</span>
+                        </form>
+                    </div>
+                    <a href="https://www.letskorail.com/">
+                        <button type="button" class="t1_info_btn">세부정보</button>
+                    </a>
+                </div>
+
+<!--                <div class="ticket_sub2">-->
+<!--                    <div class="ticket2_banner">승차권2</div>-->
+<!--                    <div class="ticket2_info">-->
+<!--                        <form method="post" action="">-->
+<!--                            <span id="ticket2_info">버스정보</span></br>-->
+<!--                            <span id="ticket2_infonum">일반(경유)</span>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                    <div class="ticket2_dep">-->
+<!--                        <form method="post" action="">-->
+<!--                            <span id="ticket2_depst">출발</span></br>-->
+<!--                            <span id="ticket2_deptime">00:00</span>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                    <div class="ticket2_arr">-->
+<!--                        <form method="post" action="">-->
+<!--                            <span id="ticket2_arrst">도착</span></br>-->
+<!--                            <span id="ticket2_arrtime">00:00</span>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                    <a href="https://intercitybus.tmoney.co.kr/main.do">-->
+<!--                        <button type="button" class="t2_info_btn">세부정보</button>-->
+<!--                    </a>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

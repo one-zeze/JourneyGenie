@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JourneyGenie : 시간표 조회</title>
+    <link rel="icon" href="/resources/static/image/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;700&family=Roboto:wght@100;400;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/resources/static/css/schedule.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/resources/static/js/schedule.js"></script>
+    <script>
+        // js 파일로 옮기면 작동이 외않데..
+        $(document).ready(function () {
+
+            $('#menu_btn').mouseenter(function () {
+                $('.menu_li').css('display', 'block');
+            })
+
+            $('.top_menu').mouseleave(function () {
+                $('.menu_li').css('display', 'none');
+            })
+
+            $('.choice1').on('change', function () {
+                if ($(this).val() == '기차') {
+                    $('.train_table1').show();
+                    $('.bus_table1').hide();
+                } else {
+                    $('.train_table1').hide();
+                    $('.bus_table1').show();
+                }
+            })
+            $('.choice2').on('change', function () {
+                if ($(this).val() == '기차') {
+                    $('.train_table2').show();
+                    $('.bus_table2').hide();
+                } else {
+                    $('.train_table2').hide();
+                    $('.bus_table2').show();
+                }
+            })
+        })
+    </script>
+</head>
+
+<body id="body">
+<th:block>
+    <span th:text="${session.userId}" id="session_value" hidden="hidden"></span>
+</th:block>
+    <header id="header">
+        <div class="header">
+            <ul>
+                <!-- 좌측 서브 메뉴 -->
+                <li>
+                    <div class="menu">
+                        <div id="menu_btn">메뉴</div>
+                        <div class="menu_li">
+                            <ul class="top_menu">
+                                <li><a id="ticket">승차권 확인</a></li>
+                                <li><a href="/schedule">시간표 조회</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- 중앙 로고 배치 -->
+                <li>
+                    <div id="logo">
+                        <a href="/main">JourneyGenie</a>
+                    </div>
+                </li>
+
+                <!-- 우측 로그인 및 마이페이지 -->
+                <li>
+                    <div id="sub_menu">
+                        <ul>
+                            <li><a id="login">로그인</a></li>
+                            <li><a id="mypage">마이페이지</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 시간표 검색 div -->
+    <div class="sch_div">
+
+        <div class="search_left">
+            <select class="choice1">
+                <option value="기차">기차</option>
+                <option value="시외버스">시외버스</option>
+                <option value="고속버스">고속버스</option>
+            </select>
+
+            <div class="select_station1">
+                <div class="body_dep">
+                    <form method="post" action="search.php">
+                        <input class=textform1 type=text name=search_dep id="dep1" autocomplete="off" placeholder="출발지"
+                            required onclick="search()">
+                </div>
+                <div class="body_angle">
+                    <img src="/resources/static/image/angle_right.png" alt="화살표">
+                </div>
+                <div class="body_arr">
+                    <form method="post" action="search.php">
+                        <input class=textform1 type=text name=search_arr id="arr1" autocomplete="off" placeholder="도착지"
+                            required onclick="search()">
+                </div>
+            </div>
+
+            <div class="sch_data1">
+                <table class="train_table1">
+                    <thead class="train_head">
+                        <tr>
+                            <th>열차</th>
+                            <th>출발</th>
+                            <th>도착</th>
+                            <th>운임료</th>
+                            <th>열차번호</th>
+                        </tr>
+                    </thead>
+                    <tbody class="train_body" id="train_test">
+                        <tr tabindex="-1" id="train1" name="info">
+                            <td>KTX</td>
+                            <td>00:00</td>
+                            <td>00:00</td>
+                            <td>10,000원</td>
+                            <td>20,000원</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="bus_table1">
+                    <thead class="bus_head">
+                        <tr>
+                            <th>등급</th>
+                            <th>출발</th>
+                            <th>도착</th>
+                            <th>요금</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bus_body" id="bus_test">
+                        <tr tabindex="-1">
+                            <td>일반</td>
+                            <td>00:00</td>
+                            <td>00:00</td>
+                            <td>10,000원</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="search_right">
+            <select class="choice2">
+                <option value="기차">기차</option>
+                <option value="고속버스">고속버스</option>
+                <option value="시외버스">시외버스</option>
+            </select>
+
+            <div class="select_station2">
+                <div class="body_dep">
+                    <form method="post" action="search.php">
+                        <input class=textform2 type=text name=search_dep id="dep2" autocomplete="off" placeholder="출발지"
+                            required onclick="search2()">
+                </div>
+                <div class="body_angle">
+                    <img src="/resources/static/image/angle_right.png" alt="화살표">
+                </div>
+                <div class="body_arr">
+                    <form method="post" action="search.php">
+                        <input class=textform2 type=text name=search_arr id="arr2" autocomplete="off" placeholder="도착지"
+                            required onclick="search2()">
+                </div>
+            </div>
+
+            <div class="sch_data2">
+                <table class="train_table2">
+                    <thead class="train_head">
+                        <tr>
+                            <th>열차</th>
+                            <th>출발</th>
+                            <th>도착</th>
+                            <th>운임료</th>
+                            <th>열차번호</th>
+                        </tr>
+                    </thead>
+                    <tbody class="train_body" id="train_test2">
+                        <tr tabindex="-1">
+                            <td>KTX</td>
+                            <td>00:00</td>
+                            <td>00:00</td>
+                            <td>10,000원</td>
+                            <td>20,000원</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="bus_table2">
+                    <thead class="bus_head">
+                        <tr>
+                            <th>등급</th>
+                            <th>출발</th>
+                            <th>도착</th>
+                            <th>요금</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bus_body" id="bus_test2">
+                        <tr tabindex="-1">
+                            <td>일반</td>
+                            <td>00:00</td>
+                            <td>00:00</td>
+                            <td>10,000원</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 예매하기 버튼 -->
+        <div class="search_btn_div">
+            <a id="pay">
+                <button type="button" class="search_btn">예매하기</button>
+            </a>
+        </div>
+    </div>
+    <footer id="blank">
+
+    </footer>
+</body>
+
+</html>

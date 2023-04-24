@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JourneyGenie : 마이페이지</title>
+    <link rel="icon" href="/resources/static/image/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;700&family=Roboto:wght@100;400;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/resources/static/css/mypage_info_modify.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="/resources/static/js/mypage_info_modify.js"></script>
+</head>
+
+<body id="body">
+<th:block>
+    <span th:text="${session.userId}" id="session_value" hidden="hidden"></span>
+</th:block>
+    <header id="header">
+        <div class="header">
+            <ul>
+                <!-- 좌측 서브 메뉴 -->
+                <li>
+                    <div class="menu">
+                        <div id="menu_btn">메뉴</div>
+                        <div class="menu_li">
+                            <ul class="top_menu">
+                                <li><a href="/ticket">승차권 확인</a></li>
+                                <li><a href="/schedule">시간표 조회</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- 중앙 로고 배치 -->
+                <li>
+                    <div id="logo">
+                        <a href="/main">JourneyGenie</a>
+                    </div>
+                </li>
+
+                <!-- 우측 로그인 및 마이페이지 -->
+                <li>
+                    <div id="sub_menu">
+                        <ul>
+                            <li><a id="login">로그인</a></li>
+                            <li><a href="/mypage_info">마이페이지</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </header>
+
+    <div id="prof_logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-square"
+            viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            <path
+                d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z" />
+        </svg>
+    </div>
+
+    <div class="title">
+        <h2>개인정보 수정</h2>
+    </div>
+
+    <div class="diff">
+        <table class="mypage">
+            <th>마이페이지</th>
+            <tr>
+                <td>
+                    <li><a href="/mypage_book">승차권이용내역</a></li>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <li><a href="/mypage_info">개인정보관리</a></li>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <li><a href="/mypage_card">카드관리</a></li>
+                </td>
+            </tr>
+        </table>
+
+        <div class="modify_info">
+            <div class="box">
+
+                    <div id="back_box1"></div>
+
+                    <!-- <hr id="separate" /> -->
+
+                    <div id="name">
+                        <span>이름</span>
+                        <input type="name" name="name">
+                    </div>
+
+                    <hr id="one" />
+
+                    <div id="back_box2"></div>
+
+                    <div id="id">
+                        <span>아이디</span>
+                        <input type="id" name="id">
+                    </div>
+
+                    <hr id="two" />
+
+                    <div id="back_box3"></div>
+
+                    <div id="pwd">
+                        <span>비밀번호</span>
+                        <input type="password" name="pwd">
+                    </div>
+
+                    <hr id="three" />
+
+                    <div id="back_box4"></div>
+
+                    <div id="email">
+                        <span>이메일</span>
+                        <input type="email" name="email">
+                    </div>
+
+                    <hr id="four" />
+
+                    <div id="back_box5"></div>
+
+                    <div id="phoneNum">
+                        <span>전화번호</span>
+                        <input type="tel" name="phoneNum">
+                    </div>
+                </form>
+
+
+
+        </div>
+
+    </div>
+
+
+
+        <button class="tab" id="modify_btn">수정</button>
+<!--    <button class="tab" onclick="openMenu('modify',this,'blue')">수정</button>-->
+
+
+
+</body>
+
+</html>

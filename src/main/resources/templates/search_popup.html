@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>역 및 터미널 검색</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;700&family=Roboto:wght@100;400;900&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="/resources/static/js/search_popup.js"></script>
+</head>
+
+<style>
+    * {margin: 0; padding: 0; font-family: 'Noto Sans KR', sans-serif;}
+    a {text-decoration: none; color: black; margin: 0 10px;}
+    li {list-style: none; display: inline-block;}
+
+    .station {
+        /* display: none; */
+    }
+    .terminal,
+    .icTerminal {
+        display: none;
+    }
+
+    .search_form1,
+    .search_form2,
+    .search_form3 {
+        position: relative;
+        width: 504px;
+        height: 60px;
+        text-align: center;
+        margin: 0 auto;
+        background-color: darkblue;
+    }
+    .search_word1,
+    .search_word2,
+    .search_word3 {
+        position: relative;
+        left: 5px;
+        width: 400px;
+        height: 40px;
+        line-height: 30px;
+        border-radius: 30px;
+        padding-left: 25px;
+    }
+    #search_btn1,
+    #search_btn2,
+    #search_btn3 {
+        position: relative;
+        top: 12px;
+        left: 7px;
+        width: 30px;
+        height: 30px;
+        padding: 2px;
+        background-color: white;
+        border-radius: 10px;
+        border: none;
+    }
+    .search_body1,
+    .search_body2,
+    .search_body3 {
+        position: relative;
+        width: 500px;
+        height: 436px;
+        margin: 0 auto;
+        border: 2px solid black;
+    }
+    .stationH2,
+    .terminalH2,
+    .icTerminalH2 {
+        position: absolute;
+        width: 200px;
+        height: 436px;
+        text-align: center;
+        font-weight: 700;
+        line-height: 436px;
+        border-right: 1px solid skyblue;
+    }
+
+    .search_body1 > ul,
+    .search_body2 > ul,
+    .search_body3 > ul {
+        position: absolute;
+        width: 295px;
+        height: 436px;
+        right: 0;
+    }
+    .search_body1 > ul > li > button,
+    .search_body2 > ul > li > button,
+    .search_body3 > ul > li > button {
+        position: relative;
+        width: 151px;
+        height: 40px;
+        text-align: 700;
+        margin-left: -4px;
+        margin-right: -4px;
+        border: none;
+        border-right: 1px solid skyblue;
+        border-bottom: 1px solid skyblue;
+        background-color: white;
+    }
+</style>
+<body>
+    <div class="station">
+        <div class="search_form1">
+            <div class="search_form1">
+                <input type="text" class="search_word1" name="searchWord1" placeholder="역 명을 입력하세요"
+                       maxlength="20">
+                <input type="image" src="/resources/static/image/search.png" id="search_btn1" name="search_btn1">
+            </div>
+        </div>
+
+        <div class="search_body1">
+            <h2 class="stationH2">역 검색</h2>
+            <ul>
+                <!--                <li th:each="station: ${test}" th:text="${station}"></li>-->
+                <li><button class="station0"></button></li>
+                <li><button class="station1"></button></li>
+                <li><button class="station2"></button></li>
+                <li><button class="station3"></button></li>
+                <li><button class="station4"></button></li>
+                <li><button class="station5"></button></li>
+                <li><button class="station6"></button></li>
+                <li><button class="station7"></button></li>
+                <li><button class="station8"></button></li>
+                <li><button class="station9"></button></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="terminal">
+        <div class="search_form2">
+                <input type="text" class="search_word2" name="searchWord2" placeholder="터미널 명을 입력하세요"
+                    maxlength="20">
+                <input type="image" src="/resources/static/image/search.png" id="search_btn2" name="search_btn2">
+        </div>
+
+        <div class="search_body2">
+            <h2 class="terminalH2">고속터미널 검색</h2>
+            <ul>
+                <li><button class="terminal_btn0"></button></li>
+                <li><button class="terminal_btn1"></button></li>
+                <li><button class="terminal_btn2"></button></li>
+                <li><button class="terminal_btn3"></button></li>
+                <li><button class="terminal_btn4"></button></li>
+                <li><button class="terminal_btn5"></button></li>
+                <li><button class="terminal_btn6"></button></li>
+                <li><button class="terminal_btn7"></button></li>
+                <li><button class="terminal_btn8"></button></li>
+                <li><button class="terminal_btn9"></button></li>
+                <li><button class="terminal_btn10"></button></li>
+                <li><button class="terminal_btn11"></button></li>
+                <li><button class="terminal_btn12"></button></li>
+                <li><button class="terminal_btn13"></button></li>
+                <li><button class="terminal_btn14"></button></li>
+                <li><button class="terminal_btn15"></button></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="icTerminal">
+        <div class="search_form3">
+            <input type="text" class="search_word3" name="searchWord3" placeholder="터미널 명을 입력하세요"
+                   maxlength="20">
+            <input type="image" src="/resources/static/image/search.png" id="search_btn3" name="search_btn3">
+        </div>
+
+        <div class="search_body3">
+            <h2 class="icTerminalH2">시외터미널 검색</h2>
+            <ul>
+                <li><button class="icTerminal_btn0"></button></li>
+                <li><button class="icTerminal_btn1"></button></li>
+                <li><button class="icTerminal_btn2"></button></li>
+                <li><button class="icTerminal_btn3"></button></li>
+                <li><button class="icTerminal_btn4"></button></li>
+                <li><button class="icTerminal_btn5"></button></li>
+                <li><button class="icTerminal_btn6"></button></li>
+                <li><button class="icTerminal_btn7"></button></li>
+                <li><button class="icTerminal_btn8"></button></li>
+                <li><button class="icTerminal_btn9"></button></li>
+                <li><button class="icTerminal_btn10"></button></li>
+                <li><button class="icTerminal_btn11"></button></li>
+                <li><button class="icTerminal_btn12"></button></li>
+                <li><button class="icTerminal_btn13"></button></li>
+                <li><button class="icTerminal_btn14"></button></li>
+                <li><button class="icTerminal_btn15"></button></li>
+                <li><button class="icTerminal_btn16"></button></li>
+                <li><button class="icTerminal_btn17"></button></li>
+                <li><button class="icTerminal_btn18"></button></li>
+                <li><button class="icTerminal_btn19"></button></li>
+                <li><button class="icTerminal_btn20"></button></li>
+                <li><button class="icTerminal_btn21"></button></li>
+                <li><button class="icTerminal_btn22"></button></li>
+                <li><button class="icTerminal_btn23"></button></li>
+                <li><button class="icTerminal_btn24"></button></li>
+                <li><button class="icTerminal_btn25"></button></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

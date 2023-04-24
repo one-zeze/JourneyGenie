@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JourneyGenie : 결제</title>
+    <link rel="stylesheet" href="/resources/static/css/pay.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;700&family=Roboto:wght@100;400;900&display=swap"
+        rel="stylesheet">
+    <!-- <script src="../jquery-3.6.3.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="/resources/static/js/pay.js"></script>
+    <link rel="icon" href="/resources/static/image/logo.png">
+</head>
+
+<body id="body">
+<th:block>
+    <span th:text="${session.userId}" id="session_value" hidden="hidden"></span>
+</th:block>
+    <header id="header">
+        <div class="header">
+            <ul>
+                <!-- 좌측 서브 메뉴 -->
+                <li>
+                    <div class="menu">
+                        <div id="menu_btn">메뉴</div>
+                        <div class="menu_li">
+                            <ul class="top_menu">
+                                <li><a href="/ticket">승차권 확인</a></li>
+                                <li><a href="/schedule">시간표 조회</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- 중앙 로고 배치 -->
+                <li>
+                    <div id="logo">
+                        <a href="/main">JourneyGenie</a>
+                    </div>
+                </li>
+
+                <!-- 우측 로그인 및 마이페이지 -->
+                <li>
+                    <div id="sub_menu">
+                        <ul>
+                            <li><a id="login">로그인</a></li>
+                            <li><a href="/mypage_info">마이페이지</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </header>
+
+    <div class="container">
+
+        <div class="select">
+            <!-- 인원정보 -->
+            <div class="type">
+                <h3>▶인원정보</h3>
+                <form action="#" name="frm">
+
+                    <div>
+                        <span>어른</span>
+                        <select id="person" name="adult">
+                            <option value="1">1</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <span>어린이</span>
+                        <select name="chiled" id="chiled">
+                            <option value="#">만 6세~12세</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <span>유아</span>
+                        <select id="person" name="infant">
+                            <option value="#">만 6세미만</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <span>경로</span>
+                        <select id="person" name="elder">
+                            <option value="#">만 65세이상</option>
+                        </select>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- 좌석종류 -->
+            <div class="type" id="seat_type">
+                <h3>▶좌석종류</h3>
+                <form action="#" name="frm">
+
+                    <select name="position">
+                        <option value="#">기본</option>
+                        <option value="#">1인석</option>
+                        <option value="#">창측좌석</option>
+                        <option value="#">내측좌석</option>
+                    </select>
+
+                    <select name="direction">
+                        <option value="#">좌석방향</option>
+                        <option value="#">순방향석</option>
+                        <option value="#">역방향석</option>
+                    </select>
+
+                    <select name="kind">
+                        <option value="#">기본</option>
+                        <option value="#">유아동반</option>
+                        <option value="#">노트북</option>
+                        <option value="#">편한대화</option>
+                        <option value="#">수동휠체어석</option>
+                        <option value="#">전동휠체어석</option>
+                        <option value="#">수유실 인접</option>
+                        <option value="#">자전거거치대</option>
+                        <option value="#">2층석</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <!-- 결제금액 -->
+        <div class="payment">
+            <span>총 결제금액은 </span>
+            <strong id="money"> </strong>
+            <span> 원 입니다.</span>
+        </div>
+
+        <!-- 결제 방식 -->
+        <div class="pay">
+
+
+            <div class="pay-kind">
+
+                <h3>▶결제 방식</h3>
+                <div id="click">
+                    <input type="radio" id="chk_card" name="chk_info" value="00" onchange="setDisplay()"
+                        checked="checked">등록카드
+                </div>
+                <div id="click">
+                    <input type="radio" id="chk_kakao" name="chk_info" value="01" onchange="setDisplay()">
+                    <img id="kakao_img" src="/resources/static/image/kakao.png" alt="kakao">
+                </div>
+                <div id="click">
+                    <input type="radio" id="chk_naver" name="chk_info" value="02" onchange="setDisplay()">
+                    <img id="naver_img" src="/resources/static/image/naver.png" alt="naver">
+                </div>
+
+            </div>
+
+            <div class="choice_pay">
+                <img id="mycard" src="/resources/static/image/card.png" alt="카드으으응">
+                <div class="pick">
+                    <button id="kakao_btn">카카오페이 바로가기</button>
+                    <button id="naver_btn">네이버페이 바로가기</button>
+                </div>
+
+                <button id="payment-button">결제</button>
+
+            </div>
+
+        </div>
+
+        <!-- 결제하기 -->
+
+    </div>
+
+    <footer id="blank">
+
+    </footer>
+
+</body>
+
+</html>

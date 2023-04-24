@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JourneyGenie</title>
+    <link rel="icon" href="/resources/static/image/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;700&family=Roboto:wght@100;400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/static/css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="/resources/static/js/main.js" charset="utf-8"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#menu_btn').mouseenter(function () {
+                $('.menu_li').css('display', 'block');
+            })
+
+            $('.top_menu').mouseleave(function () {
+                $('.menu_li').css('display', 'none');
+            })
+
+            $('#arr').keydown(function () {
+                let dep = $('#dep').val();
+                let arr = $('#arr').val();
+                if(event.keyCode == 13){
+                    location.href="../templates/schedule.html";
+
+                    localStorage.setItem('dep', dep);
+                    localStorage.setItem('arr', arr);
+                }
+            })
+        })
+    </script>
+</head>
+
+<body id="body">
+<th:block>
+    <span th:text="${session.userId}" id="session_value" hidden="hidden"></span>
+</th:block>
+    <header id="header">
+        <div class="header">
+            <ul>
+                <!-- 좌측 서브 메뉴 -->
+                <li>
+                    <div class="menu">
+                        <div id="menu_btn">메뉴</div>
+                        <div class="menu_li">
+                            <ul class="top_menu">
+                                <li><a id="ticket">승차권 확인</a></li>
+                                <li><a href="/schedule">시간표 조회</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- 중앙 로고 배치 -->
+                <li>
+                    <div id="logo">
+                        <a href="/main">JourneyGenie</a>
+                    </div>
+                </li>
+
+                <!-- 우측 로그인 및 마이페이지 -->
+                <li>
+                    <div id="sub_menu">
+                        <ul>
+                            <li><a id="login">로그인</a></li>
+                            <li><a id="mypage">마이페이지</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div id="main_body">
+        <div class="body_logo">
+            <img src="/resources/static/image/logo.png" alt="조지로고">
+        </div>
+
+        <div class="body_slogan">
+            Fast at once, with JourneyGenie
+            <p>기차와 시외버스를 한 번에 빠르게 조회 및 예약해 보세요.</p>
+        </div>
+
+        <div class="body_dep_arr">
+            <div class="body_dep">
+                <div class="dep_title">
+                    <h1>출발지</h1>
+                </div>
+                <form method="get" action="/schedule">
+                    <input class="textform" type="text" name="search_dep" id="dep" autocomplete="off" placeholder="출발지" required>
+                </form>
+            </div>
+            <div class="body_angle">
+                <img src="/resources/static/image/angle_right.png" alt="화살표">
+            </div>
+            <div class="body_arr">
+                <div class="dep_title">
+                    <h1>도착지</h1>
+                </div>
+                <form method="get" action="/schedule">
+                    <input class="textform" type=text name="search_arr" id="arr" autocomplete="off" placeholder="도착지" required>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

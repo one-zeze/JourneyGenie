@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>역 및 터미널 검색</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;700&family=Roboto:wght@100;400;900&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="/resources/static/js/search_popup2.js"></script>
+</head>
+
+<style>
+    * {margin: 0; padding: 0; font-family: 'Noto Sans KR', sans-serif;}
+    a {text-decoration: none; color: black; margin: 0 10px;}
+    li {list-style: none; display: inline-block;}
+
+    .popup2_station {
+        /* display: none; */
+    }
+    .popup2_terminal,
+    .popup2_icTerminal {
+        display: none;
+    }
+
+    .popup2_search_form1,
+    .popup2_search_form2,
+    .popup2_search_form3 {
+        position: relative;
+        width: 504px;
+        height: 60px;
+        text-align: center;
+        margin: 0 auto;
+        background-color: darkblue;
+    }
+    .popup2_search_word1,
+    .popup2_search_word2,
+    .popup2_search_word3 {
+        position: relative;
+        left: 5px;
+        width: 400px;
+        height: 40px;
+        line-height: 30px;
+        border-radius: 30px;
+        padding-left: 25px;
+    }
+    #popup2_search_btn1,
+    #popup2_search_btn2,
+    #popup2_search_btn3 {
+        position: relative;
+        top: 12px;
+        left: 7px;
+        width: 30px;
+        height: 30px;
+        padding: 2px;
+        background-color: white;
+        border-radius: 10px;
+        border: none;
+    }
+    .popup2_search_body1,
+    .popup2_search_body2,
+    .popup2_search_body3 {
+        position: relative;
+        width: 500px;
+        height: 436px;
+        margin: 0 auto;
+        border: 2px solid black;
+    }
+    .popup2_stationH2,
+    .popup2_terminalH2,
+    .popup2_icTerminalH2 {
+        position: absolute;
+        width: 200px;
+        height: 436px;
+        text-align: center;
+        font-weight: 700;
+        line-height: 436px;
+        border-right: 1px solid skyblue;
+    }
+
+    .popup2_search_body1 > ul,
+    .popup2_search_body2 > ul,
+    .popup2_search_body3 > ul {
+        position: absolute;
+        width: 295px;
+        height: 436px;
+        right: 0;
+    }
+    .popup2_search_body1 > ul > li > button,
+    .popup2_search_body2 > ul > li > button,
+    .popup2_search_body3 > ul > li > button {
+        position: relative;
+        width: 151px;
+        height: 40px;
+        text-align: 700;
+        margin-left: -4px;
+        margin-right: -4px;
+        border: none;
+        border-right: 1px solid skyblue;
+        border-bottom: 1px solid skyblue;
+        background-color: white;
+    }
+</style>
+<body>
+<div class="popup2_station">
+  <div class="popup2_search_form1">
+    <div class="popup2_search_form1">
+      <input type="text" class="popup2_search_word1" name="popup2_searchWord1" placeholder="역 명을 입력하세요"
+             maxlength="20">
+      <input type="image" src="/resources/static/image/search.png" id="popup2_search_btn1" name="popup2_search_btn1">
+    </div>
+  </div>
+
+  <div class="popup2_search_body1">
+    <h2 class="popup2_stationH2">역 선택</h2>
+    <ul>
+      <li><button class="popup2_station_btn0"></button></li>
+      <li><button class="popup2_station_btn1"></button></li>
+      <li><button class="popup2_station_btn2"></button></li>
+      <li><button class="popup2_station_btn3"></button></li>
+      <li><button class="popup2_station_btn4"></button></li>
+      <li><button class="popup2_station_btn5"></button></li>
+      <li><button class="popup2_station_btn6"></button></li>
+      <li><button class="popup2_station_btn7"></button></li>
+      <li><button class="popup2_station_btn8"></button></li>
+      <li><button class="popup2_station_btn9"></button></li>
+    </ul>
+  </div>
+</div>
+
+<div class="popup2_terminal">
+  <div class="popup2_search_form2">
+    <input type="text" class="popup2_search_word2" name="popup2_searchWord2" placeholder="터미널 명을 입력하세요"
+           maxlength="20">
+    <input type="image" src="/resources/static/image/search.png" id="popup2_search_btn2" name="popup2_search_btn2">
+  </div>
+
+  <div class="popup2_search_body2">
+    <h2 class="popup2_terminalH2">터미널 선택</h2>
+    <ul>
+      <li><button class="popup2_terminal_btn0"></button></li>
+      <li><button class="popup2_terminal_btn1"></button></li>
+      <li><button class="popup2_terminal_btn2"></button></li>
+      <li><button class="popup2_terminal_btn3"></button></li>
+      <li><button class="popup2_terminal_btn4"></button></li>
+      <li><button class="popup2_terminal_btn5"></button></li>
+      <li><button class="popup2_terminal_btn6"></button></li>
+      <li><button class="popup2_terminal_btn7"></button></li>
+      <li><button class="popup2_terminal_btn8"></button></li>
+      <li><button class="popup2_terminal_btn9"></button></li>
+    </ul>
+  </div>
+</div>
+
+<div class="popup2_icTerminal">
+  <div class="popup2_search_form3">
+    <input type="text" class="popup2_search_word3" name="popup2_searchWord3" placeholder="터미널 명을 입력하세요"
+           maxlength="20">
+    <input type="image" src="/resources/static/image/search.png" id="popup2_search_btn3" name="popup2_search_btn3">
+  </div>
+
+  <div class="popup2_search_body3">
+    <h2 class="popup2_icTerminalH2">시외터미널 선택</h2>
+    <ul>
+      <li><button class="popup2_icTerminal_btn0"></button></li>
+      <li><button class="popup2_icTerminal_btn1"></button></li>
+      <li><button class="popup2_icTerminal_btn2"></button></li>
+      <li><button class="popup2_icTerminal_btn3"></button></li>
+      <li><button class="popup2_icTerminal_btn4"></button></li>
+      <li><button class="popup2_icTerminal_btn5"></button></li>
+      <li><button class="popup2_icTerminal_btn6"></button></li>
+      <li><button class="popup2_icTerminal_btn7"></button></li>
+      <li><button class="popup2_icTerminal_btn8"></button></li>
+      <li><button class="popup2_icTerminal_btn9"></button></li>
+      <li><button class="popup2_icTerminal_btn10"></button></li>
+      <li><button class="popup2_icTerminal_btn11"></button></li>
+      <li><button class="popup2_icTerminal_btn12"></button></li>
+      <li><button class="popup2_icTerminal_btn13"></button></li>
+      <li><button class="popup2_icTerminal_btn14"></button></li>
+      <li><button class="popup2_icTerminal_btn15"></button></li>
+      <li><button class="popup2_icTerminal_btn16"></button></li>
+      <li><button class="popup2_icTerminal_btn17"></button></li>
+      <li><button class="popup2_icTerminal_btn18"></button></li>
+      <li><button class="popup2_icTerminal_btn19"></button></li>
+    </ul>
+  </div>
+</div>
+</body>
+
+</html>

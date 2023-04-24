@@ -1,0 +1,235 @@
+* {margin: 0; padding: 0; font-family: 'Noto Sans KR', sans-serif;}
+a {text-decoration: none; color: black; margin: 0 10px;}
+li {list-style: none; display: inline-block;}
+
+#body {
+    background: url(/resources/static/image/bodybg.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    min-width: 100vw;
+    max-width: 100vw;
+}
+
+#header {
+    position: fixed;
+    left: 50px;
+    right: 50px;
+    text-align: center;
+    z-index: 99;
+}
+
+.header {
+    position: relative;
+    padding: 2px 0 2px 0;
+    margin: 25px auto;
+    text-align: center;
+    border-radius: 30px;
+    width: 60%;
+    height: 56px;
+    min-width: 800px;
+    min-height: 56px;
+    background-color: white; 
+    opacity : 0.8;
+    box-shadow: 0px 1px 5px 0px;
+}
+
+/* 좌측 서브 메뉴 */
+.menu {
+    position: absolute;
+    border-radius: 12px;
+    padding: 0px 15px 0px 15px;
+    top: 3px;
+    bottom: 3px;
+    left: 0px;
+    flex-direction: column;
+    text-align: center;
+}
+
+.menu #menu_btn {
+    padding: 15px 15px 15px 15px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#menu_btn:hover{
+    background-color: lightgray;
+}
+
+.menu .menu_li {
+    display: none;
+}
+
+.menu .top_menu {
+    position: absolute;
+    display: flex;
+    left: 0;
+    margin-top: 15px;
+    width: 200px;
+    padding: 15px 15px 15px 15px;
+    flex-direction: column;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0px 3px 15px 0px;
+    z-index: 99;
+}
+
+.menu .top_menu li {
+    margin-top: 10px;
+    padding: 5px 5px 5px 5px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.menu .top_menu li:first-child {
+    margin-top: 0px;
+}
+
+.menu .top_menu li:hover {
+    background-color: lightgray;
+}
+
+/* 중앙 로고 배치 */
+#logo {
+    position: relative;
+    margin: 0 auto;
+    border-radius: 12px;
+    padding: 15px 15px 15px 15px;
+    font-weight: 900;
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* 우측 로그인 마이페이지 */
+#sub_menu {
+    position: absolute;
+    border-radius: 12px;
+    right: 30px;
+    top: 3px;
+    bottom: 3px;
+    cursor: pointer;
+}
+
+#sub_menu li {
+    border-radius: 12px;
+    padding: 15px 0px 15px 0px;
+}
+
+#sub_menu li:hover {
+    background-color: lightgray;
+}
+
+/* 중앙 바디 */
+#main_body {
+    position: absolute;
+    width: 1300px;
+    min-width: 1100px;
+    height: 800px;
+    min-height: 800px;
+    margin-top: 100px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#main_body .body_logo {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 25px auto;
+    text-align: center;
+}
+
+#main_body .body_logo > img {
+    width: 130px;
+    height: 130px;
+}
+
+#main_body .body_slogan {
+    position: relative;
+    width: 1000px;
+    height: 100px;
+    font-size: 60px;
+    font-weight: 700;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#main_body .body_slogan > p {
+    position: relative;
+    width: 1000px;
+    height: 100px;
+    font-size: 16px;
+    text-align: center;
+}
+
+#main_body .body_dep_arr {
+    position: relative;
+    width: 80%;
+    min-width: 1100px;
+    height: 300px;
+    margin: 100px auto;
+    border-radius: 20px;
+    opacity: 0.85;
+    background-color: white;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+}
+
+.body_dep_arr .body_dep {
+    position: absolute;
+    width: 220px;
+    height: 150px;
+    top: 60px;
+    left: 200px;
+}
+
+.body_dep_arr .body_arr {
+    position: absolute;
+    width: 220px;
+    height: 150px;
+    top: 60px;
+    right: 200px;
+}
+
+.dep_title {
+    position: relative;
+    width: 220px;
+    height: 50px;
+    text-align: center;
+}
+h1 {
+    background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    color: transparent;
+    -webkit-background-clip: text;
+    font-size: 40px;
+}
+
+.body_dep #dep, #arr {
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    border: none;
+    top: 90px;
+    border: 2px solid black;
+    border-radius: 12px;
+    /* border-bottom: 1px solid black; */
+    font-size: 16px;
+    font-weight: 700;
+    padding-left: 20px;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.body_dep_arr .body_angle {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 510px;
+    transform: translate(0, -50%);
+}
+
+.body_dep_arr .body_angle > img {
+    width: 70px;
+    height: 70px;
+}

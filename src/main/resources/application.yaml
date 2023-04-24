@@ -1,0 +1,31 @@
+# Open Api 서비스키, url
+OpenApi:
+  url:
+    IcBusUrl: "http://apis.data.go.kr/1613000/SuburbsBusInfoService"
+    ExBusUrl: "http://apis.data.go.kr/1613000/ExpBusInfoService"
+    TrainUrl: "http://apis.data.go.kr/1613000/TrainInfoService"
+  key:
+    trainKey: "=FpOaWGf9Wk8cZ9naaQZQSGOeEKcg1icz6oVvbK2yQ4jr9%2FkelZv6IugbJwCUQnJH%2BO9pNGAs8Y6zGytufy1TAw%3D%3D"
+    exbusKey: "=FpOaWGf9Wk8cZ9naaQZQSGOeEKcg1icz6oVvbK2yQ4jr9%2FkelZv6IugbJwCUQnJH%2BO9pNGAs8Y6zGytufy1TAw%3D%3D"
+    icbusKey: "=IyohEuYzIkD6WEf7D5UHFTTFbqRqRJcwWq9HODesv1ppurqPhyYgbTtNfrxsIMJ9M9MzYSzo9IqocBJZm8J%2FBg%3D%3D"
+
+spring:
+  datasource:
+    url: "jdbc:mysql://127.0.0.1:3306/journeyGenie?serverTimezone=Asia/Seoul"
+    username: "wz97"
+    password: "##wo26dhkttn"
+
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+  mvc:
+    static-path-pattern: "/resources/static/**"
+
+
+server:
+  port: 9090
